@@ -1,0 +1,15 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+.confirmar{
+    margin-top: 8rem;
+    .nombre-pagina{
+        @include m.textoDegradado(v.$azul);
+    }
+    .acciones{
+        justify-content: center;
+
+        a{
+            @include m.accionesDegradadas(v.$azul);
+        }
+    }
+}

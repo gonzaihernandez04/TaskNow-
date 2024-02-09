@@ -1,6 +1,7 @@
 <?php
 namespace Controllers;
 use MVC\Router;
+use Model\Usuario;
 
 class LoginController{
 
@@ -19,12 +20,18 @@ class LoginController{
     }
 
     public static function crear(Router $router){
+        $alertas = [];
+        $usuario = new Usuario;
         if($_SERVER['REQUEST_METHOD'] == "POST"){
+            $usuario->sincronizar($_POST);
+            $alertas = $usuario->validarNuevaCuenta();
 
         }
 
         $router->render('auth/crear',[
-            "titulo" =>'Crear cuenta en UPTASK'
+            "titulo" =>'Crear cuenta en UPTASK',
+            "alertas"=>$alertas,
+            "usuario" =>$usuario
         ]);
     }
 
@@ -60,7 +67,6 @@ class LoginController{
     }
     
     public static function confirmar(Router $router){
-        echo "desde mensaje";
 
         $router->render('auth/confirmar',[
             "titulo"=>'Confirma tu cuenta'

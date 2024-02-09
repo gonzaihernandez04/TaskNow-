@@ -52,10 +52,9 @@ class LoginController{
     }
     
     public static function mensaje(Router $router){
-        echo "desde mensaje";
        
         $router->render('auth/mensaje',[
-            'titulo' => 'Exitoso'
+            'titulo' => 'Cuenta creada exitosamente'
         ]);
 
     }

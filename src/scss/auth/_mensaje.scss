@@ -1,0 +1,8 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+.mensaje{
+    margin-top: 8rem ;
+    .nombre-pagina{
+        @include m.textoDegradado(v.$naranja);
+    }
+}

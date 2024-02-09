@@ -1,0 +1,19 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+.crear{
+    margin-top: 8rem;
+   
+    .nombre-pagina{
+        @include m.textoDegradado(v.$rosa);
+      
+    
+    }
+    input[type="submit"]{
+        @include m.boton(v.$rosa,v.$blanco);
+    }
+    .acciones{
+        a{
+           @include m.accionesDegradadas(v.$rosa);
+        }
+    }
+}

@@ -34,7 +34,7 @@ class LoginController{
         }
 
         $router->render('auth/recuperar',[
-            "titulo" => 'Recuperar Cuenta'
+            "titulo" => 'Olvide mi contraseña'
         ]);
     }
 

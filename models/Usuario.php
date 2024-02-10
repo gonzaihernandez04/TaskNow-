@@ -19,7 +19,7 @@ class Usuario extends ActiveRecord{
         $this->nombre = $args['nombre'] ?? '';
         $this->email = $args['email'] ?? '';
         $this->pass = $args['pass'] ?? '';
-        $this->pass2 = $args['pass2'] ?? '';
+        $this->pass2 = $args['pass2'] ?? null;
         $this->token = $args['token'] ?? '';
         $this->confirmado = $args['confirmado'] ?? '';
     }
@@ -28,10 +28,19 @@ class Usuario extends ActiveRecord{
         if(!$this->nombre) self::$alertas['error'][] = "El nombre es obligatorio";
         if(!$this->email) self::$alertas['error'][] = "El email es obligatorio";
         if(!$this->pass) self::$alertas['error'][] = "La contraseña es obligatoria";
-        if(!strlen($this->pass)<6) self::$alertas['error'][] = "La contraseña debe contener al menos 6 caracteres";
-        if($this->pass!=$this->pass2) self::$alertas['error'][] = "Las contraseñas deben ser iguales";
+        if(strlen($this->pass)<6) self::$alertas['error'][] = "La contraseña debe contener al menos 6 caracteres";
+        if($this->pass!=$this->pass2)  self::$alertas['error'][] = "Las contraseñas deben ser iguales";
         return self::$alertas;
     }
+
+    public function generarToken(){
+        $this->token = substr(uniqid(md5(rand())),0,15);
+    }
+    public function hashPassword(){
+        $this->pass = password_hash($this->pass,PASSWORD_BCRYPT);
+    }
+
+
 
 }
 

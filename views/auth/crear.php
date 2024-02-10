@@ -1,8 +1,9 @@
 <main class="contenedor crear">
-    <?php include_once __DIR__ . '/../templates/nombre-sitio.php'; ?>
+    <?php include_once __DIR__ . '/../templates/nombre-sitio.php';?>
 
     <div class="contenedor-md">
         <p class="descripcion-pagina">Crear cuenta</p>
+        <?php include_once __DIR__ . '/../templates/alertas.php';?>
 
         <form action="/crear" method="post" class="formulario">
         
@@ -27,7 +28,7 @@
                 <input type="pass" name="pass2" id="pass2" placeholder="Repita la constraseña">
             </div>
 
-            <input type="submit" value="Iniciar Sesion" class="boton">
+            <input type="submit" value="Crear Cuenta" class="boton">
         </form>
 
         <div class="acciones">

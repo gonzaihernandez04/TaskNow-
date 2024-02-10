@@ -1,0 +1,16 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+.alertas{
+    margin: 0 auto;
+    .alerta{
+        margin: 1rem 0;
+        text-align: center;
+        &.error{
+            @include m.alerta(v.$rojoClaro,v.$rojo);
+        }
+        &.exito{      
+            @include m.alerta(v.$verde,v.$verde);
+        }
+        
+    }
+}

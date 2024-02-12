@@ -1,5 +1,6 @@
 <main class="contenedor index">
-  <?php include_once __DIR__ . '/../templates/nombre-sitio.php';?>
+  <?php include_once __DIR__ . '/../templates/nombre-sitio.php';
+  ?>
 
 
     <div class="contenedor-md">

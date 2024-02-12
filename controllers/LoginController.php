@@ -145,14 +145,21 @@ class LoginController{
                 $usuario->hashPassword();
 
                 //Borro el token
-                $usuario->token = null;
+                //$usuario->token = null;
 
                 //Lo guardo en la base de datos
-                $usuario->guardar();
+                $resultado = $usuario->guardar();
+                //Redireccionar
+                if($resultado){
+                    $mostrar=0;
+                   Usuario::setAlerta('exito',"La contraseña se cambio correctamente");
+                }
+
             }
 
         }
     
+        $alertas = Usuario::getAlertas();
         $router->render('auth/restablecer',[
             "titulo" => "Restablecer contraseña",
             "alertas"=>$alertas,

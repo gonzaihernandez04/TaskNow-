@@ -14,7 +14,7 @@
     </form>
     <?php } ?>
     <div class="acciones">
-        <a href="/">¿Ya recordaste tu contraseña?</a>
+        <a href="/">Volver a Iniciar Sesion<a>
         <a href="/crear">¿Aun no tienes una cuenta? Obtener una</a>
     </div>
 

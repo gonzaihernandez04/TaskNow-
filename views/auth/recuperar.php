@@ -1,12 +1,13 @@
 <section class="contenedor recuperar">
 
-    <?php include_once __DIR__ . '/../templates/nombre-sitio.php'; ?>
+    <?php include_once __DIR__ . '/../templates/nombre-sitio.php';?>
 
     <div class="contenedor-sm">
-        <form action="/recuperar" method="POST" class="formulario">
+        <?php include_once __DIR__ . '/../templates/alertas.php';?>
+        <form action="/recuperar" method="POST" class="formulario" novalidate>
             <div class="campo">
                 <label for="email">Email</label>
-                <input type="email" name="email" id="Email" placeholder="Tu email">
+                <input type="email" name="email" id="Email" placeholder="Tu email" value="<?php $usuario->email ?? ''?>">
             </div>
 
             <input type="submit" value="Enviar mail">

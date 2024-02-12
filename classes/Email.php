@@ -14,7 +14,7 @@ public function __construct($email,$nombre,$token)
     $this->nombre = $nombre ?? '';
     $this->email = $email ?? '';
     $this->token = $token ?? '';
-    
+
     $this->phpMailer = new PHPMailer();
     $this->phpMailer->isSMTP();
     $this->phpMailer->Host = 'sandbox.smtp.mailtrap.io';
@@ -35,7 +35,7 @@ public function enviarConfirmacion(){
 
     $contenido = '<html>';
     $contenido .= '<p><strong>Hola! ' . $this->nombre .' </strong> Has creado tu cuenta en uptask. Solo debes confirmarla en el siguiente enlace: </p>';
-    $contenido.= '<p><a href="http://localhost:3000/confirmar?token=' .$this->token .  '">Presiona aquí </a></p>';
+    $contenido.= '<p><a href="http://localhost:3000/confirmar?token=' .$this->token .'">Presiona aquí </a></p>';
     $contenido.= "<p>Si tu no creaste esta cuenta, puedes ignorar este mensaje</p>";
     $contenido .= "</html>";
 
@@ -45,16 +45,25 @@ public function enviarConfirmacion(){
 
 public function enviarInstrucciones(){
 
+    $this->phpMailer->setFrom("appsalon04@gmail.com");
+    $this->phpMailer->addAddress("appsalon04@gmail.com");
+    $this->phpMailer->Subject= "Restablecer contraseña";
 
+    $this->phpMailer->isHTML(TRUE);
+    $this->phpMailer->CharSet = "UTF-8";
 
+    $contenido = '<html>';
+    $contenido .= '<p><strong>Hola! ' . $this->nombre .' </strong> Has solicitado restablecer tu contraseña. Puedes cambiarla en el siguiente enlace: </p>';
+    $contenido.= '<p><a href="http://localhost:3000/restablecer?token=' .$this->token .'">Presiona aquí </a></p>';
+    $contenido.= "<p>Si tu no solicitaste este cambio, agregue metodos de seguridad.</p>";
+    $contenido .= "</html>";
+
+    $this->phpMailer->Body = $contenido;
+    $this->phpMailer->send();
 }
 
 
-
-
-
 }
-
 
 
 ?>

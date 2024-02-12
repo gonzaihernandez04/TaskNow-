@@ -6,10 +6,10 @@
         margin: 1rem 0;
         text-align: center;
         &.error{
-            @include m.alerta(v.$rojoClaro,v.$rojo);
+            @include m.alerta(v.$rojoClaro,v.$rojo,v.$rojo);
         }
         &.exito{      
-            @include m.alerta(v.$verde,v.$verde);
+            @include m.alerta(v.$verdeClaro,v.$verde,v.$verde);
         }
         
     }

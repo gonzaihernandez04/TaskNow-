@@ -71,13 +71,13 @@
     background-clip: text;
 }
 
-@mixin alerta($bgColor,$borderColor){
+@mixin alerta($bgColor,$borderColor,$textColor){
     background-color: $bgColor;
     border-left: $borderColor 5px solid;
     padding: 1.3rem;
     padding-left: 2rem;
     text-align: left;
-    color: v.$rojo;
+    color: $textColor;
     font-weight: 800;
     text-transform: uppercase;
 }

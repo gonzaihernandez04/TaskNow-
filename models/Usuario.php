@@ -33,11 +33,26 @@ class Usuario extends ActiveRecord{
         return self::$alertas;
     }
 
+    public function validarPassword(){
+        if(strlen($this->pass)<6) self::$alertas['error'][] =  "La contraseña debe contener al menos 6 caracteres";
+        if(!$this->pass) self::$alertas['error'][] =  "Debes escribir una contraseña";
+        return self::$alertas;
+    }
+
     public function generarToken(){
         $this->token = substr(uniqid(md5(rand())),0,15);
     }
     public function hashPassword(){
         $this->pass = password_hash($this->pass,PASSWORD_BCRYPT);
+    }
+
+    public function comprobarMailRecuperacion(){
+        if(!$this->email) self::$alertas['error'][] = "Debe escribir el mail correspondiente a su cuenta";
+        if(!filter_var($this->email,FILTER_VALIDATE_EMAIL)){
+            self::$alertas['error'][] = "Email no valido";
+
+        }
+        return self::$alertas;
     }
 
 

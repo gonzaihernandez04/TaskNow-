@@ -17,6 +17,7 @@
 .formulario{
     input:not([type="submit"]){
         background-color: v.$blanco;
+        outline: 1px solid v.$grisClaro;
     }
     input[type="submit"]{
         @include m.boton(v.$indigo,v.$blanco);
@@ -24,6 +25,17 @@
         text-transform: uppercase;
         font-weight: bold;
         font-size: 1.4rem;
+    }
+    textarea{
+        flex: 1;
+        border: none;
+        outline:1px solid v.$grisClaro;
+        resize: none;
+
+    }
+    .campo{
+        margin-bottom: 4rem;
+        align-items: flex-start;
     }
 }
 }

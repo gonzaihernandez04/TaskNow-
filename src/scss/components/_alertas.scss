@@ -11,6 +11,10 @@
         &.exito{      
             @include m.alerta(v.$verdeClaro,v.$verde,v.$verde);
         }
+        font-size: 1.2rem;
+        @include m.tablet{
+            font-size: 1.4rem;
+        }
         
     }
 }

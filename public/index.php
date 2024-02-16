@@ -5,6 +5,7 @@ require_once __DIR__ . '/../includes/app.php';
 use MVC\Router;
 use Controllers\LoginController;
 use Controllers\DashboardController;
+use Model\Proyecto;
 
 $router = new Router();
 
@@ -38,7 +39,15 @@ $router->get('/logout',[LoginController::class,'logout']);
 //ZONA DE PROYECTOS
 
 $router->get('/dashboard', [DashboardController::class, 'index']);
+
+$router->get("/proyecto",[DashboardController::class,"proyecto"]);
+
+//Crear proyectos
 $router->get('/crear-proyecto', [DashboardController::class, 'crear']);
+$router->post('/crear-proyecto', [DashboardController::class, 'crear']);
+
+
+//Perfil del usuario
 $router->get('/perfil', [DashboardController::class, 'perfil']);
 
 

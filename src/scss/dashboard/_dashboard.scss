@@ -14,4 +14,16 @@
     .nombre-pagina{
         font-size: 2.8rem;
     }
+.formulario{
+    input:not([type="submit"]){
+        background-color: v.$blanco;
+    }
+    input[type="submit"]{
+        @include m.boton(v.$indigo,v.$blanco);
+        padding: 1rem;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 1.4rem;
+    }
+}
 }

@@ -39,6 +39,7 @@ $router->get('/logout',[LoginController::class,'logout']);
 
 $router->get('/dashboard', [DashboardController::class, 'index']);
 $router->get('/crear-proyecto', [DashboardController::class, 'crear']);
+$router->get('/perfil', [DashboardController::class, 'perfil']);
 
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador

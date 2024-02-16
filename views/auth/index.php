@@ -5,11 +5,12 @@
 
     <div class="contenedor-md">
         <p class="descripcion-pagina">Iniciar Sesion</p>
+        <?php include_once __DIR__ . '/../templates/alertas.php';?>
 
         <form action="" method="post" class="formulario">
             <div class="campo">
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="Tu email">
+                <input type="email" name="email" id="email" placeholder="Tu email" value="<?php echo $authUsuario->nombre ?? ''?>">
             </div>
 
             <div class="campo">

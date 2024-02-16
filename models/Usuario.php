@@ -13,7 +13,7 @@ class Usuario extends ActiveRecord{
     public $token;
     public $confirmado;
     public $pass2;
-    public function __construct()
+    public function __construct($args = [])
     {
         $this->id = $args['id'] ?? null;
         $this->nombre = $args['nombre'] ?? '';
@@ -54,6 +54,23 @@ class Usuario extends ActiveRecord{
         }
         return self::$alertas;
     }
+
+    public function validarCamposInicioSesion(){
+        if(!$this->email) self::$alertas['error'][] = "El campo del mail debe estar lleno";
+        if(!$this->pass) self::$alertas['error'][] = "El campo de la contraseña debe estar lleno";
+        if(!filter_var($this->email,FILTER_VALIDATE_EMAIL)) self::$alertas['error'][] = "Debe colocar un mail y no un texto";
+
+
+        return self::$alertas;
+    }
+
+    public function comprobarContraseña($pass){
+
+        return password_verify($pass,$this->pass);
+    
+    }
+
+
 
 
 

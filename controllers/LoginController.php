@@ -11,12 +11,40 @@ class LoginController{
    
 
     public static function login(Router $router){
+        $alertas = [];
+        $authUsuario = new Usuario;
         if($_SERVER['REQUEST_METHOD'] == "POST"){
+           $authUsuario = new Usuario($_POST);
+           //Valido el inicio de sesion
+           $alertas = $authUsuario->validarCamposInicioSesion();
+            if(empty($alertas)){
+                //Adquiero el objeto del usuario correspondiente a traves del email puesto en el login
+                $usuario = $authUsuario->where('email',$authUsuario->email);
+
+                //Compruebo si esta confirmado
+
+                //compruebo la contraseña
+                if(!$usuario->comprobarContraseña($authUsuario->pass) || !$usuario->confirmado){
+                    Usuario::setAlerta("error","La contraseña no es correcta o el usuario no esta confirmado");
+                }else{
+                    session_start();
+                    $_SESSION['id'] = $usuario->id;
+                    $_SESSION['username'] = $usuario->nombre;
+                    $_SESSION['email'] = $usuario->email;
+                    $_SESSION['login'] = true;
+                    header('Location: /dashboard');
+                    
+                }
+
+            }
+
 
         }
-
+        $alertas = Usuario::getAlertas();
         $router->render('auth/index',[
-            "titulo" =>'Iniciar Sesion'
+            "titulo" =>'Iniciar Sesion',
+            "alertas"=>$alertas,
+            "authUsuario"=>$authUsuario
         ]);
 
     }
@@ -145,7 +173,7 @@ class LoginController{
                 $usuario->hashPassword();
 
                 //Borro el token
-                //$usuario->token = null;
+                $usuario->token = null;
 
                 //Lo guardo en la base de datos
                 $resultado = $usuario->guardar();
@@ -212,9 +240,10 @@ class LoginController{
     }
     
     public static function logout(){
-      
-     
-
+        session_start();
+        if(!empty($_SESSION)) $_SESSION = [];
+    
+        header("Location: /");
     }
 
 

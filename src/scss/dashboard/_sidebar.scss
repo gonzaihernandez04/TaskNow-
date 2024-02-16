@@ -1,0 +1,35 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+
+.sidebar{
+    @include m.animacion(backgroundAnimation,15s,linear,infinite);
+    padding: 5rem;
+    h2{
+        color: v.$blanco;
+        margin: 0;
+        text-align: center;
+        font-size: 4.5rem;
+    
+    }
+
+    .sidebar-nav{
+        margin-top: 4rem;
+        a{
+            color: v.$blanco;
+            display: block;
+            margin-bottom: 1.5rem;
+            padding: .7rem;
+            transition: padding .2s ;
+            text-transform: capitalize;
+            font-size: 1.5rem;
+            &:hover, &.activo{
+                border-left: v.$blanco 3px solid;
+                padding-left: 1rem;
+               
+            
+            }
+        }
+    }
+  
+}

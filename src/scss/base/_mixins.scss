@@ -81,3 +81,42 @@
     font-weight: 800;
     text-transform: uppercase;
 }
+
+    //ANIMACIONES
+
+
+@mixin animacion($animation, $time, $method,$times){
+
+    animation: backgroundAnimation $time $method $times ;
+
+}
+
+
+@keyframes backgroundAnimation {
+    0%{
+        background-color: v.$cyan;
+    
+    }
+
+    33%{
+        background-color: v.$azul;
+    }
+
+    55%{
+        background-color: v.$indigo;
+
+
+    }
+    75%{
+        background-color: v.$morado;
+
+
+    }
+
+    100%{
+        background-color: v.$cyan;
+
+
+    }
+   
+}

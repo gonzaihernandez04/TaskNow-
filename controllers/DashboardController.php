@@ -10,8 +10,7 @@ class DashboardController{
    
         isAuth();
 
-        $proyectos = Proyecto::all();
-
+        $proyectos = Proyecto::belongsTo('idUsuario',$_SESSION['id']);
 
         $router->render('/dashboard/index',[
             "titulo" => "Proyectos",

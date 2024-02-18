@@ -15,6 +15,17 @@
         @include m.tablet{
             font-size: 1.4rem;
         }
+
         
     }
 }
+
+.alerta{
+
+    &.aviso{
+        @include m.alerta(v.$celeste,v.$azul,v.$azul);
+        font-size: 1.5rem;
+
+    }
+}
+

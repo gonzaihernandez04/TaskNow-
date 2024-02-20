@@ -33,7 +33,7 @@ function marcarProyectos() {
             papelera.classList.add('visibilidad');
 
              idProyecto = breakSpace(proyecto);
-            papelera.href=`/eliminar?urlProyecto=${idProyecto}`;
+            papelera.dataset.urlEliminar = `${idProyecto}`;
 
         });
     });
@@ -62,7 +62,24 @@ function confirmPapelera(){
     //Cuando se clickee la papelera seleccionada, pregunta si se esta seguro de querer borrar el proyecto, en caso de que si, refirecciona al href de la papelera que ya posee la id del Proyecto
     papelera.addEventListener('click',()=>{
         if(confirm("¿Estas seguro que queres borrar el proyecto?")){
-            window.location.href = papelera.href;
+
+            dispararSwal("success","Exito","Proyecto borrado correctamente",`/eliminar?urlProyecto=${papelera.dataset.urlEliminar}`);
+           
         }
     })
 }
+
+function dispararSwal(icono,titulo,texto,url){
+    console.log("HOLA")
+    Swal.fire({
+        icon: icono,
+        title: titulo,
+        text: texto,
+        button: "OK",
+      }).then(() => {
+        //Actualizo la pagina
+            window.location = url;
+
+      },3000);
+}
+

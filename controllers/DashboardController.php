@@ -106,7 +106,9 @@ class DashboardController{
         if(!$url) return;
 
         $proyecto = Proyecto::where('urlProyecto',$url);
-        if($proyecto) $proyecto->eliminar();
+        if($proyecto) {
+            $proyecto->eliminar();
+        }
         header('Location: /dashboard');
 
 

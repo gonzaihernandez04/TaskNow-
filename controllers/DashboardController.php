@@ -97,5 +97,19 @@ class DashboardController{
         ]);
       
     }
+
+
+    public static function delete(){
+        session_start();
+        isAuth();
+        $url = s($_GET['urlProyecto']);
+        if(!$url) return;
+
+        $proyecto = Proyecto::where('urlProyecto',$url);
+        if($proyecto) $proyecto->eliminar();
+        header('Location: /dashboard');
+
+
+    }
 }
 

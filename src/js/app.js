@@ -4,11 +4,13 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 
 function iniciarApp(){
-    marcarProyectos();
+   marcarProyectos();
+   confirmPapelera();
 }
 
 
 function marcarProyectos() {
+    let idProyecto;
     //Seleccionar los proyectos
     const proyectos = document.querySelectorAll('.proyecto');
     //Seleccionar la papelera(tempalte de php reutilizable)
@@ -20,6 +22,7 @@ function marcarProyectos() {
     //Recorrer proyectos
     proyectos.forEach(proyecto => {
         proyecto.addEventListener('click', () => {
+            
             // Deseleccionar todos los proyectos
             deseleccionarProyectos(proyectos);
 
@@ -29,8 +32,9 @@ function marcarProyectos() {
             // Mostrar la papelera solo si el proyecto está marcado
             papelera.classList.add('visibilidad');
 
-            const idProyecto = breakSpace(proyecto);
-            papelera.href = `/eliminar?urlProyecto=${idProyecto}`;
+             idProyecto = breakSpace(proyecto);
+            papelera.href=`/eliminar?urlProyecto=${idProyecto}`;
+
         });
     });
 
@@ -46,4 +50,19 @@ function marcarProyectos() {
 function breakSpace(proyecto) {
     const idProyecto = proyecto.classList;
     return idProyecto[1];
+}
+
+//Funcion para preguntar si de verdad quiere borrar un proyecto
+function confirmPapelera(){
+    //Selecciono la papelera
+    const papelera = document.querySelector('.papelera');
+    //Evaluo si hay una papelera existente
+    if(!papelera) return;
+
+    //Cuando se clickee la papelera seleccionada, pregunta si se esta seguro de querer borrar el proyecto, en caso de que si, refirecciona al href de la papelera que ya posee la id del Proyecto
+    papelera.addEventListener('click',()=>{
+        if(confirm("¿Estas seguro que queres borrar el proyecto?")){
+            window.location.href = papelera.href;
+        }
+    })
 }

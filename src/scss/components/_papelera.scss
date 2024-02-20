@@ -1,6 +1,7 @@
 @use 'base/variables' as v;
 @use 'base/mixins' as m;
 .papelera{
+    display: none;
     position: absolute;
     bottom: 13%;
     right: 42%;
@@ -11,15 +12,12 @@
         right:40%;
     }
     opacity: .8;
-    visibility: hidden;
-    display: block;
+
     background-color: v.$rojoClaro;
     max-width: 70px;
     min-height: 50px;
     border-radius: 50%;
     margin: 0 auto;
-    display: flex;
-    justify-content: center;
     transition: transform .3s;
     svg{
         padding: 1rem .5rem;

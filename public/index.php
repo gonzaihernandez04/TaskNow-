@@ -51,5 +51,9 @@ $router->post('/crear-proyecto', [DashboardController::class, 'crear']);
 $router->get('/perfil', [DashboardController::class, 'perfil']);
 
 
+//Eliminar proyecto
+$router->get('/eliminar', [DashboardController::class, 'delete']);
+
+
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();

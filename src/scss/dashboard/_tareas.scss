@@ -1,0 +1,12 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.contenedor-nueva-tarea{
+    display: grid;
+    place-items: center;
+    .agregar-tarea{
+        @include m.boton(v.$cyan,v.$blanco);
+            
+        
+    }
+}

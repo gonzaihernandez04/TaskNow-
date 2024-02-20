@@ -4,7 +4,10 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 
 function iniciarApp(){
+    //Marca en rojo los proyectos a eliminar y muestra la papelera
    marcarProyectos();
+
+   //Funcion para mensaje de confirmar al eliminar un proyecto
    confirmPapelera();
 }
 
@@ -45,12 +48,14 @@ function marcarProyectos() {
     proyectos.forEach(proyecto => {
         proyecto.classList.remove('marcar');
     });
+
 };
 
 function breakSpace(proyecto) {
     const idProyecto = proyecto.classList;
     return idProyecto[1];
 }
+
 
 //Funcion para preguntar si de verdad quiere borrar un proyecto
 function confirmPapelera(){
@@ -70,7 +75,7 @@ function confirmPapelera(){
 }
 
 function dispararSwal(icono,titulo,texto,url){
-    console.log("HOLA")
+
     Swal.fire({
         icon: icono,
         title: titulo,

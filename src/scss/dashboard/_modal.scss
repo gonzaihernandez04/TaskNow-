@@ -23,6 +23,9 @@
             display: flex;
             justify-content: space-between;
         }
+        input[type="text"]{
+          border: 1px solid v.$grisClaro;
+        }
         legend{
             font-size: 2rem;
             display: block;

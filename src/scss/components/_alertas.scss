@@ -21,9 +21,19 @@
 }
 
 .alerta{
+    margin: 1.5rem;
+    &.error{
+        @include m.alerta(v.$rojoClaro,v.$rojo,v.$rojo);
+        font-size: 1.3rem;
 
+    }
     &.aviso{
         @include m.alerta(v.$celeste,v.$azul,v.$azul);
+        font-size: 1.5rem;
+
+    }
+    &.exito{
+        @include m.alerta(v.$verdeClaro,v.$verde,v.$verde);
         font-size: 1.5rem;
 
     }

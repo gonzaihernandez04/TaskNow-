@@ -1,9 +1,7 @@
 @use 'base/variables' as v;
 @use 'base/mixins' as m;
 
-.principal{
-    flex: 1;
-}
+
 .barra{
     background-color: v.$blanco;
     width: 100%;

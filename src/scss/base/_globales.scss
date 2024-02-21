@@ -12,8 +12,9 @@ body {
     font-family: v.$fuente_textos;
     font-size: 1.6rem;
     min-height: 100%;
-    overflow: hidden;
-   scrollbar-color: blue orange;
+   scrollbar-color: v.$celeste v.$grisClaro;
+   scrollbar-width: 2px;
+  
 }
 
 .contenedor {

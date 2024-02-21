@@ -10,6 +10,11 @@
     position: relative;
 }
 
+.principal{
+    flex: 1;
+    overflow-y: scroll ;
+}
+
 .contenido{
     padding: 2rem 0;
     .nombre-pagina{

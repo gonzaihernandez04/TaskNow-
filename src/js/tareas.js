@@ -38,7 +38,7 @@
         }
         const estados = {
             0: 'Pendiente',
-            1:'Completa'
+            1:'Completada'
         }
 
         tareas.forEach(tarea=>{
@@ -60,27 +60,38 @@
             btnEstadoTarea.textContent = estados[tarea.estado];
             btnEstadoTarea.dataset.estadoTarea = tarea.estado;
 
-            // Cambiar estado tarea
-            btnEstadoTarea.onclick = ()=>{
-                cambiarEstadoTarea(tarea);
-            }
+        
 
             const btnEliminarTarea = document.createElement('BUTTON');
             btnEliminarTarea.classList.add('eliminar-tarea');
             btnEliminarTarea.textContent = "Eliminar tarea";
             btnEliminarTarea.dataset.idTarea = tarea.id;
 
-            opcionesDiv.appendChild(btnEliminarTarea);
             opcionesDiv.appendChild(btnEstadoTarea);
+            opcionesDiv.appendChild(btnEliminarTarea);
+          
 
             contenedorTarea.appendChild(nombreTarea)
             contenedorTarea.appendChild(opcionesDiv)
 
-            contenedorTareas.appendChild(contenedorTarea)
+            contenedorTareas.appendChild(contenedorTarea);
+
+                // Cambiar estado tarea
+                btnEstadoTarea.onclick = ()=>{
+                    cambiarEstadoTarea(tarea);
+                }
+
+                // Eliminar la tarea
+                btnEliminarTarea.onclick = () =>{
+                    confirmarEliminarTarea(tarea);
+                }
+                
 
             
         })
     }
+
+    // Funcion que crea modal, componentes del formulario y animaciones.
     function mostrarFormulario(){
         const modal = document.createElement('DIV');
         modal.classList.add("modal");
@@ -121,7 +132,7 @@
     }
 
 
-
+    // Evalua si el campo de tarea del formulario para agregar nueva tarea, esta lleno, en caso de que si, agrega la tarea
     function submitFormularioNuevaTarea(){
         const tarea = document.querySelector('#tarea').value.trim();
         if(tarea === ''){
@@ -185,6 +196,7 @@
        
     }
 
+    // Funcion que actualiza el proyecto, tanto en el servidor como en el front y lo sincroniza para que se muestren los resultados al instante
     async function actualizarTarea(tarea){
         const {id,estado,nombre} = tarea;
 
@@ -200,10 +212,46 @@
 
             const respuesta = await fetch(url, {method: "POST", body: datos});
             const resultado = await respuesta.json();
-            console.log(resultado);
+            if(resultado.tipo === "exito"){
+                dispararSwal("success","Exito","Tarea actualizada correctamente");
+                tareas = tareas.map(tareaMemoria=> {
+                    if(tareaMemoria.id === id){
+                        tareaMemoria.estado = estado;
+                    }
+                    return tareaMemoria;
+                })
+                mostrarTareas();
+            }
         } catch (error) {
             console.log(error)
         }
+    }
+
+
+    async function eliminarTarea(tarea){
+   
+
+        const {id, estado, nombre, idProyecto} = tarea;
+        const url = "http://localhost:3000/api/tarea/eliminar";
+        const datos = new FormData();
+        datos.append('id',id);
+        datos.append("idProyecto",idProyecto);
+        datos.append("nombre",nombre);
+        datos.append("estado",estado);
+
+        const respuesta = await fetch(url, {method:"POST", body:datos});
+        const resultado = await respuesta.json();
+        
+        if(resultado.tipo === "exito"){
+            dispararSwal("success","Exito","Tarea borrada correctamente");
+            tareas = tareas.filter(tareaMemoria=> tareaMemoria.id != id);
+            mostrarTareas();
+        }else{
+            dispararSwal("error","Oops..","La tarea no se pudo borrar");
+        }
+    
+
+
     }
 
     // Muestra un mensaje en la interfaz
@@ -222,9 +270,10 @@
 
         setTimeout(()=>{
             alerta.remove();
-        },5000)
+        },6000)
     }
 
+    // Obtiene la URL del proyecto a traves de la URL
     function obtenerProyecto(){
 
             // Obtener los datos de la URL, como la url del proyecto y mas
@@ -234,6 +283,8 @@
             return proyecto.urlProyecto;
     }
 
+
+    // Limpia el HTML de tareas
     function limpiarTareas(){
         const listadoTareas = document.querySelector('#listado-tareas');
 
@@ -241,6 +292,35 @@
     }
 
   
+
+    // Pregunta si se quiere borrar la tarea
+    function confirmarEliminarTarea(tarea){
+        Swal.fire({
+            title: "¿Estas seguro que queres eliminar la tarea?",
+            showDenyButton: true,
+            confirmButtonText: "Si, estoy seguro",
+            cancelButtonText: 'No'
+          }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                eliminarTarea(tarea)
+            }
+          });
+    }
+
+  
+
+    function dispararSwal(icono,titulo,texto){
+
+        Swal.fire({
+            icon: icono,
+            title: titulo,
+            text: texto,
+            button: "OK",
+          })
+    }
+    
+
 
 })();
 

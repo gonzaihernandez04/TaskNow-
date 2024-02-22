@@ -61,8 +61,8 @@
             btnEstadoTarea.dataset.estadoTarea = tarea.estado;
 
             // Cambiar estado tarea
-            btnEstadoTarea.ondblclick = (e)=>{
-                console.log("cambiando")
+            btnEstadoTarea.onclick = ()=>{
+                cambiarEstadoTarea(tarea);
             }
 
             const btnEliminarTarea = document.createElement('BUTTON');
@@ -170,14 +170,40 @@
                 mostrarTareas();
 
             }
-            
-
-
         } catch (error) {
             console.log(error);
         }
         
 
+    }
+
+    function cambiarEstadoTarea({...tarea}){
+        
+        const nuevoEstado = tarea.estado === "0" ? "1" : "0";
+        tarea.estado = nuevoEstado;
+        actualizarTarea(tarea);
+       
+    }
+
+    async function actualizarTarea(tarea){
+        const {id,estado,nombre} = tarea;
+
+        const datos = new FormData();
+        datos.append('id',id);
+        datos.append('nombre',nombre);
+        datos.append('estado',estado);
+        datos.append('urlProyecto',obtenerProyecto());
+
+
+        try {
+            const url = "http://localhost:3000/api/tarea/actualizar";
+
+            const respuesta = await fetch(url, {method: "POST", body: datos});
+            const resultado = await respuesta.json();
+            console.log(resultado);
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     // Muestra un mensaje en la interfaz

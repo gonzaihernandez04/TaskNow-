@@ -5,7 +5,9 @@
     let tareas = [];
     // Boton para mostrar el modal de agregar tarea.
     const nuevaTareaBtn = document.querySelector('#agregar-tarea');
-    nuevaTareaBtn.addEventListener('click', mostrarFormulario);
+    nuevaTareaBtn.addEventListener('click', ()=>{
+        mostrarFormulario();
+    });
     
 
 
@@ -48,7 +50,10 @@
 
             const nombreTarea = document.createElement('P');
             nombreTarea.textContent = tarea.nombre;
-
+            nombreTarea.ondblclick = ()=>{
+                mostrarFormulario(true,{...tarea});
+            }
+        
             const opcionesDiv = document.createElement('DIV');
             opcionesDiv.classList.add('opciones');
 
@@ -92,18 +97,18 @@
     }
 
     // Funcion que crea modal, componentes del formulario y animaciones.
-    function mostrarFormulario(){
+    function mostrarFormulario(editar = false, tarea){
         const modal = document.createElement('DIV');
         modal.classList.add("modal");
         modal.innerHTML = `
             <form class="formulario nueva-tarea">
-                <legend>Añade una nueva tarea</legend>
+                <legend>${editar ? 'Editar tarea': 'Añade una nueva tarea'}</legend>
                 <div class="campo">
                     <label>Tarea</label>
-                    <input type="tarea" name="tarea" placeholder="Añade una nueva tarea al proyecto actual" id="tarea"/>
+                    <input type="tarea" name="tarea" placeholder="${editar ? "Editar tarea" : 'Añade una nueva tarea al proyecto actual'}" id="tarea" value="${tarea ? tarea.nombre : ''}"/>
                 </div>
                 <div class="opciones">
-                    <input type="submit" class="submit-nueva-tarea" value="Añadir tarea"/>
+                    <input type="submit" class="submit-nueva-tarea" value="${editar ? 'Guardar los cambios' : 'Añade una nueva tarea'}"/>
                     <button type="button" class="cerrar-modal">Cancelar</button>
                 </div>
             </form>
@@ -124,7 +129,24 @@
                 },500)
             }
             if(e.target.classList.contains('submit-nueva-tarea')){
-               submitFormularioNuevaTarea()
+
+                const nombreTarea = document.querySelector('#tarea').value.trim();
+                if(tarea === ''){
+                    // Mostrar una alerta de error
+                    mostrarAlerta('El nombre de la tarea es obligatorio',"error",document.querySelector('.formulario legend'));
+        
+                    return;
+                }
+
+                if(!editar){
+                  
+                    agregarTarea(nombreTarea);
+                    return;
+                }
+                tarea.nombre = nombreTarea;
+                actualizarTarea(tarea);
+                
+
             }
         })
 
@@ -132,24 +154,12 @@
     }
 
 
-    // Evalua si el campo de tarea del formulario para agregar nueva tarea, esta lleno, en caso de que si, agrega la tarea
-    function submitFormularioNuevaTarea(){
-        const tarea = document.querySelector('#tarea').value.trim();
-        if(tarea === ''){
-            // Mostrar una alerta de error
-            mostrarAlerta('El nombre de la tarea es obligatorio',"error",document.querySelector('.formulario legend'));
-
-            return;
-        }
-        agregarTarea(tarea);
-
-    }
-
+  
     // Consultar el servidor para añadir una nueva tarea al proyecto actual
-    async function agregarTarea(tarea){
+    async function agregarTarea(nombreTarea){
         // Construir la peticion
         const datos = new FormData();
-        datos.append('nombre',tarea);
+        datos.append('nombre',nombreTarea);
         datos.append('idProyecto',obtenerProyecto());
 
         try {
@@ -160,25 +170,23 @@
             });
 
             const resultado = await respuesta.json();
-            mostrarAlerta(resultado.mensaje,resultado.tipo,document.querySelector('.formulario legend'));
+            dispararSwal("success","Exito","Tarea creada correctamente");
             if(resultado.tipo === "exito"){
-                const modal = document.querySelector('.modal');
-                setTimeout(()=>{
-                    modal.remove();
-                    // location.reload();
-                },2000);
-
                 // Agregar el objeto de tarea al global de tareas
 
                 const tareaObj = {
                     id: resultado.id.toString(),
-                    nombre: tarea,
+                    nombre: nombreTarea,
                     estado: "0",
                     idProyecto: resultado.idProyecto
                 }
 
                 tareas = [...tareas,tareaObj];
                 mostrarTareas();
+                const modal = document.querySelector('.modal');
+                if(modal){
+                    modal.remove();
+                }
 
             }
         } catch (error) {
@@ -198,6 +206,7 @@
 
     // Funcion que actualiza el proyecto, tanto en el servidor como en el front y lo sincroniza para que se muestren los resultados al instante
     async function actualizarTarea(tarea){
+     
         const {id,estado,nombre} = tarea;
 
         const datos = new FormData();
@@ -216,10 +225,18 @@
                 dispararSwal("success","Exito","Tarea actualizada correctamente");
                 tareas = tareas.map(tareaMemoria=> {
                     if(tareaMemoria.id === id){
+                        console.log(tareaMemoria.estado)
                         tareaMemoria.estado = estado;
+                        tareaMemoria.nombre = nombre;
+                        console.log( tareaMemoria.estado = estado);
                     }
                     return tareaMemoria;
                 })
+
+                const modal = document.querySelector('.modal');
+
+                if(modal) modal.remove();  
+    
                 mostrarTareas();
             }
         } catch (error) {
@@ -229,8 +246,6 @@
 
 
     async function eliminarTarea(tarea){
-   
-
         const {id, estado, nombre, idProyecto} = tarea;
         const url = "http://localhost:3000/api/tarea/eliminar";
         const datos = new FormData();
@@ -244,6 +259,7 @@
         
         if(resultado.tipo === "exito"){
             dispararSwal("success","Exito","Tarea borrada correctamente");
+       
             tareas = tareas.filter(tareaMemoria=> tareaMemoria.id != id);
             mostrarTareas();
         }else{

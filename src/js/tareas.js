@@ -204,7 +204,7 @@
         };
 
         tareas = [...tareas, tareaObj];
-        mostrarTareas();
+        mostrarTareas(tareas);
         const modal = document.querySelector(".modal");
         if (modal) {
           modal.remove();
@@ -252,7 +252,7 @@
 
         if (modal) modal.remove();
 
-        mostrarTareas();
+        mostrarTareas(tareas);
       }
     } catch (error) {
       console.log(error);
@@ -275,7 +275,7 @@
       dispararSwal("success", "Exito", "Tarea borrada correctamente");
 
       tareas = tareas.filter((tareaMemoria) => tareaMemoria.id != id);
-      mostrarTareas();
+      mostrarTareas(tareas);
     } else {
       dispararSwal("error", "Oops..", "La tarea no se pudo borrar");
     }

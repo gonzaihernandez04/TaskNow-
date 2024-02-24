@@ -14,9 +14,9 @@
                 </div>
 
                 <div class="campo">
-                <label for="filtro">Completadas
+                <label for="filtro">Completadas    </label>
                     <input type="radio" name="filtro" id="filtro" value="1"/>
-                </label>
+            
                 </div>
 
                 <div class="campo">

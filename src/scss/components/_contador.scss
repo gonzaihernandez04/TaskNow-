@@ -1,0 +1,14 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+.contador{
+    font-weight: 800;
+    &.correcto{
+        color: v.$verdeClaro;
+    }
+    &.advertencia{
+        color: v.$naranja;
+    }
+    &.limite{
+        color: v.$rojo;
+    }
+}

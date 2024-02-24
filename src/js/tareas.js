@@ -1,6 +1,8 @@
 (() => {
   obtenerTareas();
   clickBotonFiltros();
+  extenderTexto();
+
   let filtradas = [];
 
   let tareas = [];
@@ -18,17 +20,22 @@
       const resultado = await respuesta.json();
       tareas = resultado.tareas;
 
-      mostrarTareas(tareas);
+      mostrarTareas();
     } catch (error) {
       console.log(error);
     }
   }
 
-  function mostrarTareas(tareas) {
+  function mostrarTareas() {
     limpiarTareas();
+    totalPendientes();
+    totalCompletadas();
+
     const contenedorTareas = document.querySelector("#listado-tareas");
 
-    if (tareas.length == 0) {
+    const arrayTareas = filtradas.length == 0 ? tareas : filtradas;
+ 
+    if (arrayTareas.length == 0) {
       const textoNoTareas = document.createElement("LI");
       textoNoTareas.textContent = "No hay tareas";
       textoNoTareas.classList.add("alerta", "aviso");
@@ -41,7 +48,7 @@
       1: "Completada",
     };
 
-    tareas.forEach((tarea) => {
+    arrayTareas.forEach((tarea) => {
       const contenedorTarea = document.createElement("LI");
       contenedorTarea.dataset.tareaId = tarea.id;
       contenedorTarea.classList.add("tarea");
@@ -86,6 +93,30 @@
         confirmarEliminarTarea(tarea);
       };
     });
+  }
+
+  function totalPendientes(){
+    const pendientes = tareas.filter(tarea=>tarea.estado == "0");
+    const inputPendiente = document.querySelector('.pendientes');
+    if(pendientes == 0){
+        inputPendiente.disabled = true;
+        return;
+    }
+    if(inputPendiente.disabled){
+        inputPendiente.disabled = false;
+    }
+  }
+
+  function totalCompletadas(){
+    const completas = tareas.filter(tarea=>tarea.estado == "1");
+    const inputCompletas = document.querySelector('.completadas');
+    if(completas == 0){
+        inputCompletas.disabled = true;
+        return;
+    }
+    if(inputCompletas.disabled){
+        inputCompletas.disabled = false;
+    }
   }
 
   // Funcion que crea modal, componentes del formulario y animaciones.
@@ -169,11 +200,12 @@
 
   function filtrarTareas(filtro) {
       if (filtro.value == "") {
-        mostrarTareas(tareas);
+        filtradas = [];
+        mostrarTareas();
         return;
       }
       filtradas = tareas.filter((tarea) => tarea.estado == filtro.value);
-      mostrarTareas(filtradas);
+      mostrarTareas();
     
   }
 
@@ -204,7 +236,7 @@
         };
 
         tareas = [...tareas, tareaObj];
-        mostrarTareas(tareas);
+        mostrarTareas();
         const modal = document.querySelector(".modal");
         if (modal) {
           modal.remove();
@@ -252,7 +284,7 @@
 
         if (modal) modal.remove();
 
-        mostrarTareas(tareas);
+        mostrarTareas();
       }
     } catch (error) {
       console.log(error);
@@ -275,7 +307,7 @@
       dispararSwal("success", "Exito", "Tarea borrada correctamente");
 
       tareas = tareas.filter((tareaMemoria) => tareaMemoria.id != id);
-      mostrarTareas(tareas);
+      mostrarTareas();
     } else {
       dispararSwal("error", "Oops..", "La tarea no se pudo borrar");
     }
@@ -342,4 +374,12 @@
       button: "OK",
     });
   }
+
+
+
+  function extenderTexto(){
+    const contenidoSubtitulo = document.querySelector('.contenido-subtitulo');
+    contenidoSubtitulo.style.maxHeight = "300px"
+  }
+
 })();

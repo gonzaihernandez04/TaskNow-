@@ -24,6 +24,7 @@ class Proyecto extends ActiveRecord{
     public function comprobarCampos(){
         if(!$this->nombre) self::$alertas['error'][] = "El proyecto debe tener un nombre";
         if(!$this->descripcion) self::$alertas['error'][] = "El proyecto debe tener una descripcion";
+        if(strlen($this->descripcion)>255) self::$alertas['error'][] = "La descripcion debe tener maximo 255 caracteres permitidos ";
         return self::$alertas;
     }
     

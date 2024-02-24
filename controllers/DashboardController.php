@@ -28,7 +28,7 @@ class DashboardController{
         $proyecto = new Proyecto;
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $proyecto = new Proyecto($_POST);
-
+            
             //Validacion
             $alertas = $proyecto->comprobarCampos();
             if(empty($alertas)){
@@ -78,10 +78,10 @@ class DashboardController{
         if($proyecto->idUsuario !== $_SESSION['id']) header("Location: /dashboard");
 
 
-
         $router->render('dashboard/proyecto',[
             "titulo"=>$proyecto->nombre,
-            "nombre"=>$_SESSION['username']
+            "nombre"=>$_SESSION['username'],
+            "descripcion"=>$proyecto->descripcion
 
         ]);
 

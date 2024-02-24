@@ -15,12 +15,16 @@
 #listado-tareas {
     list-style: none;
     padding: 0;
+    li:nth-child(2n){
+        background-color: v.$blanco;
+        border-radius: 10px;
+    }
 }
+
 
 .tarea {
     padding: .5rem 2rem;
     border-bottom: 2px solid darken(v.$grisClaro, 5%);
-    margin-bottom: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -43,6 +47,8 @@
         flex-direction: column;
         justify-content: center;
         gap: 2rem;
+   
+
         @include m.tablet{
             display: block;
         }
@@ -92,6 +98,16 @@
     padding: 0 2rem;
     align-items: center;
     gap: 2rem;
+    background-color: white;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 13px -5px rgba(222,222,222,1);
+    -moz-box-shadow: 0px 0px 13px -5px rgba(222,222,222,1);
+    box-shadow: 0px 0px 13px -5px rgba(222,222,222,1);
+    p{
+        font-weight: bolder;
+        font-size: 2.3rem;
+        color: v.$azul;
+    }
     @include m.tablet{
         flex-direction: row;
     }
@@ -119,3 +135,27 @@
    }
 
 }
+
+
+.subtitulo{
+    margin: 5rem 0;
+    p{
+      font-size: 1.8rem;
+      color: v.$morado;
+      font-weight: 900;
+    }
+    .contenido-subtitulo{
+        background-color: v.$blanco;
+
+
+      p{
+       
+      padding: 1.3rem 1rem;
+      font-size: 1.5rem;
+      color: v.$grisOscuro;
+      font-weight: 500;
+      transition: all .5s;
+      }
+  
+    }
+  }

@@ -5,7 +5,6 @@
    
     .nombre-pagina{
         @include m.textoDegradado(v.$rosa);
-      
     
     }
     input[type="submit"]{

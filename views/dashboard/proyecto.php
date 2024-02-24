@@ -4,9 +4,33 @@
         <div class="contenedor-nueva-tarea">
             <button type="button" class="agregar-tarea" id="agregar-tarea">&#43; Nueva tarea</button>
         </div>
+
+        <div class="filtros">
+        <p>Filtros</p>
+            <form  method="post">
+                <div class="campo">
+                    <label for="filtro">Todas </label>
+                    <input type="radio" name="filtro" id="filtro" value="" checked/>
+                </div>
+
+                <div class="campo">
+                <label for="filtro">Completadas
+                    <input type="radio" name="filtro" id="filtro" value="1"/>
+                </label>
+                </div>
+
+                <div class="campo">
+                <label for="filtro">Pendientes </label>
+                    <input type="radio" name="filtro" id="filtro" value="0"/>
+                </div>
+            </form>
+        </div>
+
         <ul id="listado-tareas" class="listado-tareas">
             
         </ul>
+
+      
     </div>
 
 

@@ -71,3 +71,17 @@
         }
     }
 }
+
+.filtros {
+    margin: 2rem 0;
+    display: flex;
+    padding: 0 2rem;
+    align-items: center;
+    gap: 2rem;
+   form{
+
+    display: flex;
+    gap: 2rem;
+   }
+
+}

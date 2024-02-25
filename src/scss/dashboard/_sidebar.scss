@@ -4,13 +4,36 @@
 
 .sidebar{
     /*OCULTA LA NAVEGACION PARA ESCRITORIO*/
-    display: none;
+    @include m.animacion(backgroundAnimation,15s,linear,infinite);
+    opacity: 0;
+    transition: all .5s;
+    height: 0;
+    overflow: hidden;
+
+    &.mostrar{
+        opacity: 1;
+        padding: 5rem;
+        height: 100vh;
+        position: absolute;
+        z-index: 100;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        @include m.tablet{
+            height: 100%;
+            position: relative; 
+        }
+    }
+
     @include m.tablet{
-        display: block
+        padding: 5rem;
+        height: 100%;
+        opacity: 1;
+        display: block;
+
         
     }
-    @include m.animacion(backgroundAnimation,15s,linear,infinite);
-    padding: 5rem;
     h2{
         color: v.$blanco;
         margin: 0;
@@ -39,3 +62,27 @@
     }
   
 }
+
+
+.contenedor-sidebar{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    @include m.telefono{
+        flex-direction: row;
+    }
+}
+
+.cerrar-menu{
+    display: block;
+    width: 35px;
+    height: 35px;
+    &:hover{
+        cursor: pointer;
+    }
+    @include m.tablet{
+        display: none;
+    }
+}
+

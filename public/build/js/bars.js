@@ -1,0 +1,1 @@
+const mobileMenuBtn=document.querySelector("#mobile-menu"),closeMenuBtn=document.querySelector("#cerrar-menu"),sidebar=document.querySelector(".sidebar");mobileMenuBtn&&mobileMenuBtn.addEventListener("click",()=>{sidebar.classList.toggle("mostrar")}),closeMenuBtn&&closeMenuBtn.addEventListener("click",()=>{sidebar.classList.remove("mostrar")});

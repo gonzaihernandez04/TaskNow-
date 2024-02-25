@@ -1,6 +1,11 @@
 @use 'base/variables' as v;
 
 /** Media Queries **/
+@mixin telefonoXS{
+    @media(min-width: v.$telefonoXS){
+        @content;
+    }
+}
 @mixin telefono {
     @media (min-width: v.$telefono) {
         @content;

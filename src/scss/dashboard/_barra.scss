@@ -1,23 +1,40 @@
 @use 'base/variables' as v;
 @use 'base/mixins' as m;
 
-
+.barra-mobile{
+    @include m.animacion(backgroundAnimation,15s,linear,infinite);
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include m.tablet{
+        display: none;
+        
+    }
+    h1{
+        color: v.$blanco;
+        margin: 0;
+    }
+    .menu{
+        width: 35px;
+        height: 35px;
+    }
+}
 .barra{
-    background-color: v.$blanco;
-    width: 100%;
-    padding: 3rem 2rem;
-    box-shadow: 1px 12px 9px -13px rgba(0,0,0, .4);
-    p{
-       margin-bottom: 1rem;
-        font-size: 1.5rem;
-    }
-    a{
-        font-size: 1.4rem;
-    }
+    display: none;
+
+   
     @include m.tablet{
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        background-color: v.$blanco;
+        width: 100%;
+        padding: 3rem 2rem;
+        box-shadow: 1px 12px 9px -13px rgba(0,0,0, .4);
+       
+        
         p{
             margin: 0;
             font-size: 1.6rem;

@@ -3,6 +3,12 @@
 
 
 .sidebar{
+    /*OCULTA LA NAVEGACION PARA ESCRITORIO*/
+    display: none;
+    @include m.tablet{
+        display: block
+        
+    }
     @include m.animacion(backgroundAnimation,15s,linear,infinite);
     padding: 5rem;
     h2{

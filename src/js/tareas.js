@@ -15,7 +15,7 @@
   async function obtenerTareas() {
     try {
       const id = obtenerProyecto();
-      const url = `http://localhost:3000/api/tareas?urlProyecto=${id}`;
+      const url = `/api/tareas?urlProyecto=${id}`;
       const respuesta = await fetch(url);
       const resultado = await respuesta.json();
       tareas = resultado.tareas;
@@ -217,7 +217,7 @@
     datos.append("idProyecto", obtenerProyecto());
 
     try {
-      const url = "http://localhost:3000/api/tarea";
+      const url = "/api/tarea";
       const respuesta = await fetch(url, {
         method: "POST",
         body: datos,
@@ -264,7 +264,7 @@
     datos.append("urlProyecto", obtenerProyecto());
 
     try {
-      const url = "http://localhost:3000/api/tarea/actualizar";
+      const url = "/api/tarea/actualizar";
 
       const respuesta = await fetch(url, { method: "POST", body: datos });
       const resultado = await respuesta.json();
@@ -292,7 +292,7 @@
 
   async function eliminarTarea(tarea) {
     const { id, estado, nombre, idProyecto } = tarea;
-    const url = "http://localhost:3000/api/tarea/eliminar";
+    const url = "/api/tarea/eliminar";
     const datos = new FormData();
     datos.append("id", id);
     datos.append("idProyecto", idProyecto);

@@ -17,11 +17,11 @@ public function __construct($email,$nombre,$token)
 
     $this->phpMailer = new PHPMailer();
     $this->phpMailer->isSMTP();
-    $this->phpMailer->Host = 'sandbox.smtp.mailtrap.io';
+    $this->phpMailer->Host = $_ENV['EMAIL_HOST'];
     $this->phpMailer->SMTPAuth = true;
-    $this->phpMailer->Port = 2525;
-    $this->phpMailer->Username = '94f2e9a2c92946';
-    $this->phpMailer->Password = '0a7131951c6720';
+    $this->phpMailer->Port = $_ENV['EMAIL_PORT'];
+    $this->phpMailer->Username = $_ENV['EMAIL_USER'];
+    $this->phpMailer->Password = $_ENV['EMAIL_PASS'];
 }
 
 
@@ -35,7 +35,7 @@ public function enviarConfirmacion(){
 
     $contenido = '<html>';
     $contenido .= '<p><strong>Hola! ' . $this->nombre .' </strong> Has creado tu cuenta en uptask. Solo debes confirmarla en el siguiente enlace: </p>';
-    $contenido.= '<p><a href="http://localhost:3000/confirmar?token=' .$this->token .'">Presiona aquí </a></p>';
+    $contenido.= '<p><a href="' . $_ENV['APP_URL'] . '"/confirmar?token=' .$this->token .'">Presiona aquí </a></p>';
     $contenido.= "<p>Si tu no creaste esta cuenta, puedes ignorar este mensaje</p>";
     $contenido .= "</html>";
 
@@ -54,7 +54,7 @@ public function enviarInstrucciones(){
 
     $contenido = '<html>';
     $contenido .= '<p><strong>Hola! ' . $this->nombre .' </strong> Has solicitado restablecer tu contraseña. Puedes cambiarla en el siguiente enlace: </p>';
-    $contenido.= '<p><a href="http://localhost:3000/restablecer?token=' .$this->token .'">Presiona aquí </a></p>';
+    $contenido.= '<p><a href="' . $_ENV['APP_URL'] . '"/restablecer?token=' .$this->token .'">Presiona aquí </a></p>';
     $contenido.= "<p>Si tu no solicitaste este cambio, agregue metodos de seguridad.</p>";
     $contenido .= "</html>";
 
@@ -64,6 +64,3 @@ public function enviarInstrucciones(){
 
 
 }
-
-
-?>

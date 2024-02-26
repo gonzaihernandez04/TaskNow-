@@ -1,15 +1,25 @@
 # TaskNow!
 
 Lenguajes utilizados: PHP, SASS, JavaScript, MYSQL
+
 Librerias: PHPMailer, PHPdotenv, SweetAlert2, PSR-4
+
 Manejador de paquetes: Composer, NPM
+
 Toolkits: GulpJS para compresion de imagenes, minificacion de CSS y JS. Se utiliza Sourcemaps para identificar a traves del navegador donde se establecio un estilo o un Script de JS.
+
 Arquitecturas: MVC, ActiveRecord
+
 Implementaciones necesarias para mejor UX: Virtual DOM, DarkMode a traves de nueva funcionalidad de CSS compatible con la mayoria de los navegadores modernos(@media(prefers-color-scheme)).
+
 Meta data: Se establecieron los metadatos necesarios para mejorar el SEO.
+
 Host gratuito: DOMCloud.
+
 Tipo de dispositivos: Responsive para todos los dispositivos.
+
 Tipo imagenes: Solo se utilizaron imagenes SVG para el menu de navegacion.
+
 Consumir API: Fetch API. Creacion y solicitud.
 
 Usuario para comenzar a crear: correo4@correo4.com

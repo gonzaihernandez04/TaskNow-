@@ -13,7 +13,6 @@
 
     function sumarCaracteres(e){
         const totalCaracteres = e.target.value.length;
-        console.log(totalCaracteres);
         colorearCaracteres(totalCaracteres,contador);
         contador.textContent = `${totalCaracteres}/${limiteCaracteres}`;
         if (totalCaracteres > limiteCaracteres) {

@@ -159,6 +159,22 @@
     
 
     /*PERFIL*/
+
+
+    .sidebar .sidebar-nav{
+        a{
+            &.activo, &:hover{
+             
+                    border-left-color: v.$naranja;
+                
+            }
+          
+        }
+    }
+
+    .contador{
+        color: white;
+    }
     
     
 }

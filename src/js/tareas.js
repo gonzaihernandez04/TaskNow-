@@ -272,10 +272,9 @@
         dispararSwal("success", "Exito", "Tarea actualizada correctamente");
         tareas = tareas.map((tareaMemoria) => {
           if (tareaMemoria.id === id) {
-            console.log(tareaMemoria.estado);
+          
             tareaMemoria.estado = estado;
             tareaMemoria.nombre = nombre;
-            console.log((tareaMemoria.estado = estado));
           }
           return tareaMemoria;
         });

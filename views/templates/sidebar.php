@@ -11,4 +11,8 @@
         <a class="<?php echo ($titulo === 'Nuevo proyecto') ? 'activo' : ''; ?>" href="/crear-proyecto">Crear Proyecto</a>
         <a class="<?php echo ($titulo === 'Mi Perfil') ? 'activo' : ''; ?>" href="/perfil">Mi Perfil</a>
     </nav>
+
+    <div class="cerrar-sesion-mobile">
+        <a class="cerrar-sesion" href="/logout">Cerrar sesion</a>
+    </div>
 </aside>

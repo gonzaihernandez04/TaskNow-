@@ -1,0 +1,18 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+form{
+    .acciones{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        @include m.tablet{
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        a{
+            @include m.boton(v.$indigo,v.$blanco);
+            padding: 1rem;
+        }
+    }
+}

@@ -248,6 +248,3 @@ class LoginController{
 
 
 }
-
-
-?>

@@ -50,6 +50,12 @@ $router->post('/crear-proyecto', [DashboardController::class, 'crear']);
 
 //Perfil del usuario
 $router->get('/perfil', [DashboardController::class, 'perfil']);
+$router->post('/perfil', [DashboardController::class, 'perfil']);
+
+// Cambiar contraseña
+
+$router->get('/cambiar-password',[DashboardController::class,'cambiarPassword']);
+$router->post('/cambiar-password',[DashboardController::class,'cambiarPassword']);
 
 
 //Eliminar proyecto

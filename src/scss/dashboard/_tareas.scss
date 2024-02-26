@@ -28,7 +28,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
+    flex-wrap: wrap;
     align-items: center;
 
     &:last-of-type {

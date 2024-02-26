@@ -3,10 +3,11 @@
 .papelera{
     display: none;
     position: absolute;
-    bottom: 13%;
+    bottom: -10%;
     right: 42%;
     @include m.tablet{
         right:36%;
+        bottom: 10%;
     }
     @include m.desktop{
         right:40%;

@@ -70,8 +70,29 @@
 
 }
 
+@mixin textoDegradadoDarkMode($color,$color2) {
+
+    background: linear-gradient(to right, $color 10%, $color2 100%);
+    color: transparent;
+    background-clip: text;
+    /*AGREGA COLOR BACKGROUND AL TEXT*/
+    font-size: 5rem;
+    margin-bottom: 1.5rem;
+    @include tablet{
+        font-size: 8rem;
+        margin-bottom: 2.5rem;
+    }
+
+}
+
 @mixin accionesDegradadas($color) {
     background: linear-gradient(to right, darken($color, 10%) 0%, darken($color, 40%) 100%);
+    color: transparent;
+    background-clip: text;
+}
+
+@mixin accionesDegradadasDarkMode($color,$color2) {
+    background: linear-gradient(to right, $color 10%, $color2 100%);
     color: transparent;
     background-clip: text;
 }

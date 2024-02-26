@@ -1,0 +1,164 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+@media(prefers-color-scheme: dark){
+    $grisOscuro : #19191c;
+    body{
+        background-color: $grisOscuro ;
+        .tagline, .formulario label, input{
+            color: v.$blanco;
+        }
+        .descripcion-pagina{
+            color: v.$grisClaro;
+        }
+
+        .contenedor{
+            &.index{
+                .nombre-pagina{
+                    @include m.textoDegradadoDarkMode(v.$rojo,v.$rosa);
+                }
+                .acciones a{
+                    @include m.accionesDegradadasDarkMode(v.$rojo,v.$rosa);
+
+                }
+                input[type="submit"]{
+                    background-color: v.$rojo;
+                    &:hover{
+                        background-color: darken(v.$rojo,5%);
+                    }
+                } 
+            }
+            &.crear{
+                .acciones a{
+                    @include m.accionesDegradadasDarkMode(v.$rosa,v.$blanco);
+
+                }
+            }
+            &.recuperar{
+                .acciones a{
+                    @include m.accionesDegradadasDarkMode(v.$morado,v.$blanco);
+                } 
+
+            }
+
+        }
+
+        .formulario{
+                .campo input{
+                    background-color: lighten($grisOscuro,15%);
+                }
+              
+        }
+
+        .alertas {
+            .alerta.error{
+                background-color: darken(v.$blanco,3%);
+            }
+        }    
+    }
+
+    /*ESTILOS DASHBOARD*/
+
+    .barra-mobile, .barra{
+        background-color: darken($grisOscuro,5%);
+        animation: none;
+        .menu{
+            color: v.$blanco;
+            fill: v.$blanco;
+        }
+    }
+    .barra{
+        p{
+            color: v.$naranja;
+            span{
+                color: v.$blanco;
+            }
+        }
+        .cerrar-sesion{
+            @include m.boton(v.$naranja,v.$blanco);
+            padding:  1rem;
+            font-size: 1.4rem;
+        }
+    }
+
+    /* TAREAS */
+
+    .filtros{
+        background-color: darken(v.$grisOscuro,20%);
+        box-shadow: none;
+        padding: 2rem 2rem;
+        p, label{
+            color: v.$blanco;
+        }
+        input[type="radio"]{
+            accent-color: $grisOscuro;
+        }
+    }
+
+    .subtitulo{
+        p:first-of-type{
+            color: v.$grisClaro;
+        }
+        .contenido-subtitulo{
+            background-color: darken(v.$grisOscuro,20%);
+        }
+
+    }
+
+    /* MODAL TAREAS*/
+    .modal{
+        .formulario{
+            background-color: #19191c;
+            legend{
+                color: v.$blanco;
+            }
+        }
+    }
+
+    /* DASH BOARD*/
+    .dashboard{
+        background-color: $grisOscuro;
+
+        .nombre-pagina{
+            color: v.$grisClaro;
+        }
+        .formulario{
+            .acciones{
+                gap: 2rem;
+                @include m.tablet{
+                    gap: 0;
+                }
+            }
+            input:not([type="submit"]), textarea{
+                background-color: v.$grisOscuro;
+                border: none;
+                outline: none;
+                color: v.$blanco;
+            }
+         
+        }
+        .sidebar{
+            background-color: darken($grisOscuro,10%);
+            animation: none;
+        }
+    }
+
+    .listado-proyectos .proyecto{
+        background-color: lighten($grisOscuro,20%);
+        &:hover{
+            background-color: lighten($grisOscuro,15%);
+        }
+    }
+    #listado-tareas li:nth-child(2n){
+        background-color: darken($grisOscuro,3%);
+     
+    }
+    #listado-tareas .tarea{
+        border-bottom: 1px solid $grisOscuro;
+    }
+
+    
+
+    /*PERFIL*/
+    
+    
+}

@@ -6,5 +6,6 @@
 </div>  
 
 <?php
-$script = "<script src='build/js/bars.js'></script>"
+$script = '';
+$script .= "<script src='build/js/bars.js'></script>"
 ?>

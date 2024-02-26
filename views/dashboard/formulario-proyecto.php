@@ -13,4 +13,3 @@
 
 
 
-<?php $script="<script src='/build/js/contador.js'></script>"?>

@@ -35,9 +35,10 @@ public function enviarConfirmacion(){
 
     $contenido = '<html>';
     $contenido .= '<p><strong>Hola! ' . $this->nombre .' </strong> Has creado tu cuenta en uptask. Solo debes confirmarla en el siguiente enlace: </p>';
-    $contenido.= '<p><a href="' . $_ENV['APP_URL'] . '"/confirmar?token=' .$this->token .'">Presiona aquí </a></p>';
+    $contenido.= '<p><a href="' . $_ENV['APP_URL'] . '/confirmar?token=' .$this->token .'">Presiona aquí </a></p>';
     $contenido.= "<p>Si tu no creaste esta cuenta, puedes ignorar este mensaje</p>";
     $contenido .= "</html>";
+
 
     $this->phpMailer->Body = $contenido;
     $this->phpMailer->send();
@@ -54,7 +55,7 @@ public function enviarInstrucciones(){
 
     $contenido = '<html>';
     $contenido .= '<p><strong>Hola! ' . $this->nombre .' </strong> Has solicitado restablecer tu contraseña. Puedes cambiarla en el siguiente enlace: </p>';
-    $contenido.= '<p><a href="' . $_ENV['APP_URL'] . '"/restablecer?token=' .$this->token .'">Presiona aquí </a></p>';
+    $contenido.= '<p><a href="' . $_ENV['APP_URL'] . '/restablecer?token=' .$this->token .'">Presiona aquí </a></p>';
     $contenido.= "<p>Si tu no solicitaste este cambio, agregue metodos de seguridad.</p>";
     $contenido .= "</html>";
 

@@ -13,6 +13,7 @@ Tipo imagenes: Solo se utilizaron imagenes SVG para el menu de navegacion.
 Consumir API: Fetch API. Creacion y solicitud.
 
 Usuario para comenzar a crear: correo4@correo4.com
+
 Contraseña: 1234567
 
 

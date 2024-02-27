@@ -27,7 +27,7 @@ public function __construct($email,$nombre,$token)
 
 public function enviarConfirmacion(){
     $this->phpMailer->setFrom("appsalon04@gmail.com");
-    $this->phpMailer->addAddress("appsalon04@gmail.com");
+    $this->phpMailer->addAddress("$this->email");
     $this->phpMailer->Subject= "Confirma tu cuenta";
 
     $this->phpMailer->isHTML(TRUE);

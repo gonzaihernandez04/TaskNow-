@@ -25,6 +25,7 @@ class LoginController{
                 //Compruebo si esta confirmado
 
                 //compruebo la contraseña
+               if($usuario){
                 if(!$usuario->comprobarContraseña($authUsuario->pass) || !$usuario->confirmado){
                     Usuario::setAlerta("error","La contraseña no es correcta o el usuario no esta confirmado");
                 }else{
@@ -36,6 +37,7 @@ class LoginController{
                     header('Location: /dashboard');
                     
                 }
+               }
 
             }
 

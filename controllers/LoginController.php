@@ -100,7 +100,7 @@ class LoginController{
         $alertas = Usuario::getAlertas();
 
         $router->render('auth/crear',[
-            "titulo" =>'Crear cuenta en UPTASK',
+            "titulo" =>'Crear cuenta en TaskNow',
             "alertas"=>$alertas,
             "usuario" =>$usuario
         ]);

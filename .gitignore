@@ -3,3 +3,4 @@ db.sql
 text.txt
 vendor
 .env
+.htaccess

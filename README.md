@@ -63,6 +63,14 @@ Para esto, se utilizo DateTime en php y las funciones de SQL: DATE_SUB(NOW(), IN
 Esto evalua si a paratir del momento en el que se solicito el cambio, ya transcurrieron 10 minutos, en caso de que si, devuelve el resultado.
 
 
+Problemas que se me plantearon a la hora de subir el proyecto a produccion -> Tratando de subir el proyecto a DOMCloud, me rechazaba la libreria de PHPMailer, es decir, no la detectaba. Es por esto que tuve que entrar al filemanager y buscar si el vendor/PHPMailer tenia datos. Una vez entre, no habia ninguna archivo, por lo que supuse que no me estaba detectando al libreria, si bien estaba en el composer, nunca se instalaba. Tuve que buscar mis archivos locales y ponerlos en el administrador de archivos, es ahi, cuando empezo a funcionar la libreria, peeeero... Mas problemas.
+
+El host solo admitia PHPMailer para PHP 7.1, por esta razon tuve que cambiar un par de datos en el php.ini de la maquina virtual. A todo esto, no me gustaba el dominio que me otorgaba. Asi, volvi a usar 000webhost, que es mas amigable a la vista.
+Nuevamente tuve que cambiar puntos de API, Variables de entorno y demas.
+
+FIN
+
+
 
 
 

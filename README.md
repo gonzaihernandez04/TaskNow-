@@ -50,6 +50,10 @@ Funcionalidades agregadas al proyecto original:
 Se agrego un nuevo dato: la descripcion del proyecto. Para que el usuario se ubique en que tenia planeado en cuanto al mismo.
 Contar caracteres para el limite de la descripcion de una tarea. Segun la cantidad de caracteres el color cambia -> Ver proyecto.
 Eliminar proyecto -> En la pestaña de proyectos, el usuario podra seleccionar 1 y borrarlo a traves de un boton que tiene como imagen una papelera de reciclaje.
+Ver contraseñas al escribir-> Es muy comun que una persona cuando escriba la contraseña en el campo correspondiente, tenga la duda si la escribio bien. Es por esto, que una persona comun borra, escribe despacio o se confunde a la hora de registrarse en alguna pagina web. Es una funcion muy sencilla pero util, la cual, no todas las paginas lo poseen.
+Enviar mails ya en produccion -> El curso enseña en si como enviar mail para la fase de desarrollo, lo cual, no habilitaba a la gente poder recibir el mail si se registra o quiere cambiar su contraseña. Asi, logre hacerlo.
+
+
 
 
 

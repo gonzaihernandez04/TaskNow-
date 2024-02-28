@@ -27,7 +27,7 @@ class Usuario extends ActiveRecord{
 
         $this->confirmado = $args['confirmado'] ?? '';
 
-        $this->ultimaSolicitudEnviada = $args['ultimaSolicitudEnviada'] ?? null;
+        $this->ultimaSolicitudEnviada = $args['ultimaSolicitudEnviada'] ?? '0000-00-00 00:00:00';
     }
 
     public function validarNuevaCuenta() : array{

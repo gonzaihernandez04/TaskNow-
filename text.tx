@@ -33,3 +33,40 @@ EMAIL_PORT = 2525
 EMAIL_USER = 94f2e9a2c92946
 EMAIL_PASS = 0a7131951c6720
 EMAIL_ADDRESS = uptask@uptask.com
+
+
+
+
+source: https://github.com/gonzajs04/TaskNow-
+features:
+  - 'php 8.1'
+  - mysql
+  - ssl
+  - 'ssl always'
+root: public_html/public
+nginx:
+  fastcgi: 'on'
+  locations:
+    -
+      match: /
+      try_files: '$uri $uri/ /index.php$is_args$args'
+    -
+      match: '~ \.[^\/]+(?<!\.php)$'
+      try_files: '$uri =404'
+commands:
+  - 'echo "<?php phpinfo(15);" > phpinfo.php'
+  - 'echo "display_errors = On" > .user.ini'
+  - 'echo "display_startup_errors = On" >> .user.ini'
+  - 'echo "DB_HOST=localhost" > includes/.env'
+  - 'echo "DB_USER=${USERNAME}" >> includes/.env'
+  - 'echo "DB_PASS=${PASSWORD}" >> includes/.env'
+  - 'echo "DB_NAME=${DATABASE}" >> includes/.env'
+  - 'echo "" >> includes/.env'
+  - 'echo "EMAIL_HOST=smtp-relay.brevo.com" >> includes/.env'
+  - 'echo "EMAIL_USER=hernandezgonzalo584@gmail.com" >> includes/.env'
+  - 'echo "EMAIL_PASSWORD=xsmtpsib-85855d0f81a37fa912264e1ff8460fd14d1d8cc36bd7f1cbf3a7e2af6d4c6199-mU90rJqcRyQH2xMO" >> includes/.env'
+  - 'echo "EMAIL_PORT=587" >> includes/.env'
+  - 'echo "EMAIL_ADDRESS=tasknow@gmail.com" >> includes/.env'
+  - 'echo "" >> includes/.env'
+  - 'echo "APP_URL=https://${DOMAIN}" >> includes/.env'
+  - 'composer install'

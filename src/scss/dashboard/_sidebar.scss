@@ -3,6 +3,8 @@
 
 
 .sidebar{
+    display: grid;
+    place-items: center;
     /*OCULTA LA NAVEGACION PARA ESCRITORIO*/
     @include m.animacion(backgroundAnimation,15s,linear,infinite);
     opacity: 0;
@@ -12,7 +14,7 @@
 
     &.mostrar{
         opacity: 1;
-        padding: 5rem;
+        padding: 5rem 0;
         height: 100vh;
         position: absolute;
         z-index: 100;
@@ -21,6 +23,7 @@
         left: 0;
         bottom: 0;
         @include m.tablet{
+            padding: 5rem;
             height: 100%;
             position: relative; 
         }
@@ -52,13 +55,20 @@
             margin-bottom: 3rem;
             transition: padding .2s ;
             text-transform: capitalize;
-            font-size: 2.2rem;
+                font-size: 2rem;
+            @include m.telefono{
+                font-size: 1.9rem;
+            }
             @include m.tablet{
                 text-align: left;
-                font-size: 1.7rem;
+              
+                font-size: 1.8rem;
                 margin-bottom: 1.5rem;
 
 
+            }
+            @include m.desktop{
+                font-size: 1.7rem;
             }
             &:hover, &.activo{
                 border-left: v.$blanco 3px solid;

@@ -1,18 +1,34 @@
 @use 'base/variables' as v;
 @use 'base/mixins' as m;
-form{
-    .acciones{
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        justify-content: center;
-        @include m.tablet{
-            flex-direction: row;
-            justify-content: space-between;
+.perfil{
+
+    form{
+        padding: 0 2rem;
+        .acciones{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            gap: 1rem;
+            @include m.tablet{
+                flex-direction: row;
+                justify-content: space-between;
+                gap: 0
+            }
+            a{
+                @include m.boton(v.$indigo,v.$blanco);
+                padding: 1rem;
+            }
         }
-        a{
-            @include m.boton(v.$indigo,v.$blanco);
-            padding: 1rem;
+        @include m.telefono{
+            padding: 0;
+        }
+        .campo{
+            display: block;
+            @include m.telefono{
+                display: flex;
+            }
         }
     }
+
 }

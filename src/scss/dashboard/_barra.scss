@@ -8,8 +8,32 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    h1{
+        color: v.$blanco;
+        margin: 0;
+        font-size: 4rem;
+    }
+
+    .menu{
+        width: 24px;
+        margin-top: 1rem;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+
     @include m.telefono{
         flex-direction: row;
+
+        .menu{
+            margin: 0;
+            width: 35px;
+            height: 35px;
+        }
+        h1{
+          
+            font-size: 6rem;
+        }
         
     }
     @include m.tablet{
@@ -17,17 +41,8 @@
         display: none;
         
     }
-    h1{
-        color: v.$blanco;
-        margin: 0;
-    }
-    .menu{
-        width: 35px;
-        height: 35px;
-        &:hover{
-            cursor: pointer;
-        }
-    }
+ 
+  
 }
 .barra{
     display: none;

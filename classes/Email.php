@@ -25,6 +25,8 @@ public function __construct($email,$nombre,$token)
 
 
 public function enviarConfirmacion(){
+    $seEnvio = false;
+
     $this->phpMailer->setFrom("tasknow@gmail.com");
     $this->phpMailer->addAddress($this->email);
     $this->phpMailer->Subject= "Confirma tu cuenta";
@@ -42,10 +44,14 @@ public function enviarConfirmacion(){
 
 
     $this->phpMailer->Body = $contenido;
-    $this->phpMailer->send();
+    if($this->phpMailer->send()){
+        $seEnvio = true;
+    }
+    return $seEnvio;
 }
 
 public function enviarInstrucciones(){
+    $seEnvio = false;
     $this->phpMailer->setFrom("tasknow@gmail.com");
     $this->phpMailer->addAddress($this->email);
     $this->phpMailer->Subject= "Restablecer contraseña";
@@ -62,7 +68,10 @@ public function enviarInstrucciones(){
     $contenido .= "</html>";
 
     $this->phpMailer->Body = $contenido;
-    $this->phpMailer->send();
+    if($this->phpMailer->send()){
+        $seEnvio = true;
+    }
+    return $seEnvio;
 }
 
 

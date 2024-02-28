@@ -81,11 +81,13 @@ class LoginController{
                    $resultado = $usuario->guardar();
 
                    $email = new Email($usuario->email,$usuario->nombre,$usuario->token);
-                   $email->enviarConfirmacion();
-                    if($resultado){
+                   $seEnvio = $email->enviarConfirmacion();
+                    if($resultado && $seEnvio){
                   
                     header("Location: /mensaje");
 
+                   }else{
+                    Usuario::setAlerta("error","No se pudo enviar el mail");
                    }
 
                 }
@@ -139,10 +141,15 @@ class LoginController{
 
                     //Enviar el email
                     $email = new Email($usuario->email,$usuario->nombre,$usuario->token);
-                    $email->enviarInstrucciones();
+                    $seEnvio = $email->enviarInstrucciones();
 
-                    //Imprimir la alerta
-                    Usuario::setAlerta("exito","Hemos enviado las instrucciones a tu email");
+                    if($seEnvio){
+                        //Imprimir la alerta
+                        Usuario::setAlerta("exito","Hemos enviado las instrucciones a tu email");
+                    }else{
+                        Usuario::setAlerta("error","No se ha podido enviar el mail");
+
+                    }
 
                 }else{
                     Usuario::setAlerta("error","Debes esperar 10 minutos para pedir otra vez recuperar tu contraseña");

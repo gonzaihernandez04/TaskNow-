@@ -25,3 +25,11 @@ xsmtpsib-85855d0f81a37fa912264e1ff8460fd14d1d8cc36bd7f1cbf3a7e2af6d4c6199-mU90rJ
 ;EMAIL_USER = hernandezgonzalo584@gmail.com
 ;EMAIL_PASS = xsmtpsib-85855d0f81a37fa912264e1ff8460fd14d1d8cc36bd7f1cbf3a7e2af6d4c6199-mU90rJqcRyQH2xMO
 ;EMAIL_ADDRESS = uptask@gmail.com 
+
+
+
+EMAIL_HOST = sandbox.smtp.mailtrap.io
+EMAIL_PORT = 2525
+EMAIL_USER = 94f2e9a2c92946
+EMAIL_PASS = 0a7131951c6720
+EMAIL_ADDRESS = uptask@uptask.com

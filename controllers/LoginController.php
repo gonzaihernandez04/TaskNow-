@@ -37,6 +37,8 @@ class LoginController{
                     header('Location: /dashboard');
                     
                 }
+               }else{
+                Usuario::setAlerta('error','No existe un usuario con ese mail');
                }
 
             }

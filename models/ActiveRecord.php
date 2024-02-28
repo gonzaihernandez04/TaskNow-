@@ -73,7 +73,7 @@ class ActiveRecord {
     // Busqueda de solicitud para enviar mail
 
     public static function checkTimeAwait($columna, $valor,$columnaTime){
-        $query = "SELECT * FROM ". static::$tabla . " WHERE " . $columna . " = '" . $valor . "' AND '" . $columnaTime . "'<= DATE_SUB(NOW(), INTERVAL  1 MINUTE)";
+        $query = "SELECT * FROM ". static::$tabla . " WHERE " . $columna . " = '" . $valor . "' AND '" . $columnaTime . "'<= DATE_SUB(NOW(), INTERVAL  10 MINUTE)";
         $resultado = self::consultarSQL($query);
         return $resultado;
     }

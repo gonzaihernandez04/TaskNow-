@@ -46,6 +46,11 @@
                 .campo input{
                     background-color: lighten($grisOscuro,15%);
                 }
+
+                .eye{
+                    fill: v.$blanco;
+                }
+            
               
         }
 
@@ -176,5 +181,21 @@
         color: white;
     }
     
+
+
+    .confirmar{
+        .acciones a{
+            @include m.accionesDegradadas(lighten(v.$azul,30%));
+        }
+    }
+
+    .restablecer{
+        .acciones a{
+            @include m.accionesDegradadas(lighten(v.$indigo,30%));
+
+        }
+    }
+
+ 
     
 }

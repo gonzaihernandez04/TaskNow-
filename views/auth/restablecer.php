@@ -7,8 +7,12 @@
     <?php if($mostrar){ ?>
     <form  method="post" class="formulario">
         <div class="campo">
-            <label for="pass">Password</label>
-            <input type="password" name="pass" id="pass" placeholder="Nueva contraseña">
+            <div class="container-password">
+                <label for="pass">Password</label>
+                <input type="password" name="pass" id="pass" placeholder="Nueva contraseña">
+                <?php include_once __DIR__ . '/../templates/ojopass.php'?>
+            </div>
+   
         </div>
         <input type="submit" value="Cambiar contraseña">
     </form>
@@ -22,3 +26,10 @@
 
    
 </div>
+
+
+
+<?php 
+
+    $script = "<script src='build/js/eye.js'></script>"
+?>

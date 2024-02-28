@@ -13,3 +13,8 @@ release: Se usa para cambios relacionados con la creación o finalización de un
 deps: Se usa para cambios relacionados con la gestión de dependencias, como la actualización o modificación de las dependencias del proyecto.
 config: Se usa para cambios relacionados con la configuración del proyecto, como la modificación de archivos de configuración.
 security: Se usa para cambios relacionados con la mejora o corrección de problemas de seguridad en el código.
+
+
+
+BREVO SMTP KEY: PASSWORD
+xsmtpsib-85855d0f81a37fa912264e1ff8460fd14d1d8cc36bd7f1cbf3a7e2af6d4c6199-mU90rJqcRyQH2xMO

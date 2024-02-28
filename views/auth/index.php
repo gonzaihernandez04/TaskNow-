@@ -10,12 +10,16 @@
         <form action="" method="post" class="formulario">
             <div class="campo">
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="Tu email" value="<?php echo $authUsuario->nombre ?? ''?>">
+                <input type="email" name="email" id="email" placeholder="Tu email" value="<?php echo $authUsuario->email ?? ''?>">
             </div>
 
             <div class="campo">
                 <label for="pass">Contraseña</label>
-                <input type="pass" name="pass" id="pass" placeholder="Tu contraseña">
+                <div class="container-password">
+                  <input type="password" name="pass" id="pass" placeholder="Tu contraseña">
+                  <?php include_once __DIR__ . '/../templates/ojopass.php'?>
+                </div>
+
             </div>
 
             <input type="submit" value="Iniciar Sesion" class="boton">
@@ -29,3 +33,8 @@
     </div>
 
 </main>
+
+<?php 
+
+    $script = "<script src='build/js/eye.js'></script>"
+?>

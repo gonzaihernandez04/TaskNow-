@@ -37,14 +37,37 @@
             border: none;
             font-size: 1.2rem;
             background-color: lighten(v.$gris,40%);
+            width: 100%;
             @include m.tablet{
                 padding: 1rem;
                 font-size: 100%;
             }
             
         }
+        .container-password{
+            display: flex;
+            align-items: center;
+            position: relative;
+            flex: 1;
+            
+            
+        }
         textarea{
             padding: .5rem;
+        }
+    }
+
+    .eye{
+        fill: v.$grisOscuro;
+        position: absolute;
+        right: 2%;
+        opacity: .8;
+        &:hover{
+            cursor: pointer;
+        }
+        width: 18px;
+        @include m.tablet{
+            width: 24px;
         }
     }
    

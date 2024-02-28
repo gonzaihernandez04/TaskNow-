@@ -89,6 +89,9 @@ class LoginController{
          
         }
 
+
+    
+
         $alertas = Usuario::getAlertas();
 
         $router->render('auth/crear',[

@@ -9,6 +9,9 @@ function iniciarApp(){
 
    //Funcion para mensaje de confirmar al eliminar un proyecto
    confirmPapelera();
+
+   // Habilita opcion para ver password a los input
+   btnVerPassword()
 }
 
 
@@ -87,4 +90,6 @@ function dispararSwal(icono,titulo,texto,url){
 
       },3000);
 }
+
+
 

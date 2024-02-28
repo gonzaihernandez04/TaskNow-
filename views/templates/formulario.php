@@ -7,3 +7,10 @@
     <label for="pass">Contraseña</label>
     <input type="pass" name="pass" id="pass" placeholder="Tu contraseña">
 </div>
+
+
+
+<?php 
+
+    $script = "<script src='build/js/eye.js'></script>"
+?>

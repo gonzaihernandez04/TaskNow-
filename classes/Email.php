@@ -25,7 +25,7 @@ public function __construct($email,$nombre,$token)
 
 
 public function enviarConfirmacion(){
-    $this->phpMailer->setFrom($_ENV['EMAIL_ADDRESS']);
+    $this->phpMailer->setFrom("tasknow@gmail.com");
     $this->phpMailer->addAddress($this->email);
     $this->phpMailer->Subject= "Confirma tu cuenta";
     $this->phpMailer->addAttachment(__DIR__ . '/../public/build/img/uptask.png');
@@ -46,7 +46,7 @@ public function enviarConfirmacion(){
 }
 
 public function enviarInstrucciones(){
-    $this->phpMailer->setFrom($_ENV['EMAIL_ADDRESS']);
+    $this->phpMailer->setFrom("tasknow@gmail.com");
     $this->phpMailer->addAddress($this->email);
     $this->phpMailer->Subject= "Restablecer contraseña";
     $this->phpMailer->addEmbeddedImage(__DIR__ . '/../public/build/img/uptask.png',"Logo tasknow");

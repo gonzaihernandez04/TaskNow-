@@ -70,6 +70,14 @@ class ActiveRecord {
         return array_shift( $resultado ) ;
     }
 
+    // Busqueda de solicitud para enviar mail
+
+    public static function checkTimeAwait($columna, $valor,$columnaTime){
+        $query = "SELECT * FROM ". static::$tabla . " WHERE " . $columna . " = '" . $valor . "' AND '" . $columnaTime . "'<= DATE_SUB(NOW(), INTERVAL  1 MINUTE)";
+        $resultado = self::consultarSQL($query);
+        return $resultado;
+    }
+
     // SQL para Consultas Avanzadas.
     public static function SQL($consulta) {
         $query = $consulta;

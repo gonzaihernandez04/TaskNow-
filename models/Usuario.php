@@ -5,7 +5,7 @@ use Model\ActiveRecord;
 class Usuario extends ActiveRecord{
 
     protected static $tabla = 'usuario';
-    protected static $columnasDB = ['id','nombre','email','pass','token','confirmado'];
+    protected static $columnasDB = ['id','nombre','email','pass','token','confirmado','ultimaSolicitudEnviada'];
     public $id;
     public $nombre;
     public $email;
@@ -13,6 +13,8 @@ class Usuario extends ActiveRecord{
     public $token;
     public $confirmado;
     public $pass2;
+
+    public $ultimaSolicitudEnviada;
  
     public function __construct($args = [])
     {
@@ -24,6 +26,8 @@ class Usuario extends ActiveRecord{
         $this->token = $args['token'] ?? '';
 
         $this->confirmado = $args['confirmado'] ?? '';
+
+        $this->ultimaSolicitudEnviada = $args['ultimaSolicitudEnviada'] ?? null;
     }
 
     public function validarNuevaCuenta() : array{

@@ -1,5 +1,6 @@
 <?php
 namespace Controllers;
+use DateTime;
 use MVC\Router;
 use Model\Usuario;
 use Classes\Email;
@@ -114,6 +115,16 @@ class LoginController{
                 $usuario = Usuario::where('email',$usuario->email);
                 if($usuario && $usuario->confirmado) {
 
+                    if(($usuario->checkTimeAwait('id', $usuario->id,$usuario->ultimaSolicitudEnviada))) {
+
+                    $fecha = new DateTime();
+                    
+                    // Formatear tipo datetime
+                    $fecha = $fecha->format('Y-m-d H:i:s');
+
+
+                    $usuario->ultimaSolicitudEnviada = $fecha;
+
                     //Generar un nuevo token
                     $usuario->generarToken();
                     unset($usuario->pass2);
@@ -129,6 +140,10 @@ class LoginController{
                     //Imprimir la alerta
                     Usuario::setAlerta("exito","Hemos enviado las instrucciones a tu email");
 
+                }else{
+                    Usuario::setAlerta("error","Debes esperar 10 minutos para pedir otra vez recuperar tu contraseña");
+
+                }
                 }else{
                     Usuario::setAlerta("error","El usuario no existe o no esta confirmado");
 

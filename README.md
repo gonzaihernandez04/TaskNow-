@@ -58,6 +58,11 @@ Ver contraseñas al escribir-> Es muy comun que una persona cuando escriba la co
 Enviar mails ya en produccion -> El curso enseña en si como enviar mail para la fase de desarrollo, lo cual, no habilitaba a la gente poder recibir el mail si se registra o quiere cambiar su contraseña. Asi, logre hacerlo.
 
 
+LIMITE DE REESTABLECIMIENTO DE Contraseña -> Un usuario puede solicitar 1 vez el restablecimiento de contraseña cada 10 minutos. Para esto se creo una funcion en ActiveRecord llamada checkTimeAwait() al español, chequear tiempo de espera, el cual devuelve si el usuario que quiere solicitar la contraseña, ya esta listo para poder hacerlo.
+Para esto, se utilizo DateTime en php y las funciones de SQL: DATE_SUB(NOW(), INTERVAL 10 MINUTE)
+Esto evalua si a paratir del momento en el que se solicito el cambio, ya transcurrieron 10 minutos, en caso de que si, devuelve el resultado.
+
+
 
 
 
